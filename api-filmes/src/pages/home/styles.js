@@ -17,11 +17,15 @@ export const MoveList = styled.ul`
         column-gap: 3rem;
         row-gap:4rem;
     
-    li{
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-    }
+   
+`
+
+export const Movie = styled.li`
+    
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    
     img{
         width: 180px;
         border-radius:1rem;
