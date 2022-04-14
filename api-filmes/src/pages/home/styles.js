@@ -6,13 +6,17 @@ export const Container = styled.div`
         margin: 4rem 0;
     }
 
-    ul{
+    
+`
+
+
+export const MoveList = styled.ul`
         list-style: none;
         display: grid;
         grid-template-columns :repeat(auto-fit,minmax(200px,1fr));
         column-gap: 3rem;
         row-gap:4rem;
-    }
+    
     li{
         display:flex;
         flex-direction:column;
@@ -26,5 +30,13 @@ export const Container = styled.div`
 
     span{
         font-weight: bold;
+        font-seze: 120%;
+    }
+    a{
+        transition: all .3s;
+    }
+
+    a:hover{
+        transform:scale(1.1);
     }
 `
