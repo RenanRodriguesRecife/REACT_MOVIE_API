@@ -35,6 +35,7 @@ export const Movie = styled.li`
     span{
         font-weight: bold;
         font-seze: 120%;
+        text-aling: center;
     }
     a{
         transition: all .3s;
