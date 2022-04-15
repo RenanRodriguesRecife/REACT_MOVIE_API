@@ -2,6 +2,8 @@ import { Container, MoveList, Movie } from "./styles";
 import { useState, useEffect } from 'react'
 import { APIKey } from '../../config/key';
 
+const image_path = 'https://image.tmdb.org/t/p/w500/'
+
 function Home(){
 
     const [movies, setMovies] = useState([]);
@@ -21,7 +23,7 @@ function Home(){
                 {movies?.map(movie => {
                     return(
                         <Movie key={movie.id}>
-                            <a href="#"><img src={movie.image_url} alt={movie.title}></img></a>
+                <a href="#"><img src={`${image_path}/${movie.poster_path}`} alt={movie.title}></img></a>
                             <span>{movie.title}</span>
                         </Movie>
                     )
