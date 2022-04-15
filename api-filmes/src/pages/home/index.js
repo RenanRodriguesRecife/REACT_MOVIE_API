@@ -1,51 +1,30 @@
 import { Container, MoveList, Movie } from "./styles";
+import { useState, useEffect } from 'react'
+import { APIKey } from '../../config/key';
 
 function Home(){
 
-    const movies = [
-        {
-            id: 1,
-            title: 'blade runner',
-            image_url: 'https://http2.mlstatic.com/D_NQ_NP_866792-MLB32711553663_102019-O.jpg',
-        },
-        {
-            id: 2,
-            title: 'blade runner',
-            image_url: 'https://http2.mlstatic.com/D_NQ_NP_866792-MLB32711553663_102019-O.jpg',
-        },
-        {
-            id: 3,
-            title: 'blade runner',
-            image_url: 'https://http2.mlstatic.com/D_NQ_NP_866792-MLB32711553663_102019-O.jpg',
-        },
-        {
-            id: 1,
-            title: 'blade runner',
-            image_url: 'https://http2.mlstatic.com/D_NQ_NP_866792-MLB32711553663_102019-O.jpg',
-        },
-        {
-            id: 2,
-            title: 'blade runner',
-            image_url: 'https://http2.mlstatic.com/D_NQ_NP_866792-MLB32711553663_102019-O.jpg',
-        },
-        {
-            id: 3,
-            title: 'blade runner',
-            image_url: 'https://http2.mlstatic.com/D_NQ_NP_866792-MLB32711553663_102019-O.jpg',
-        }
-    ]
+    const [movies, setMovies] = useState([]);
+
+    useEffect(() => {
+    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${APIKey}&language=en-US`)
+    .then(response => response.json())
+    .then(data => {
+    setMovies(data.results)
+    })
+  }, [])
 
     return(
         <Container>
             <h1>Movies</h1>
             <MoveList>
-                {movies.map(movie => {
+                {movies?.map(movie => {
                     return(
                         <Movie key={movie.id}>
                             <a href="#"><img src={movie.image_url} alt={movie.title}></img></a>
                             <span>{movie.title}</span>
                         </Movie>
-                )
+                    )
                 })}
             </MoveList>
         </Container>
