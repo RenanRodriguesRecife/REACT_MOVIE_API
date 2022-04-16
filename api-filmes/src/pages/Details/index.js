@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { APIKey } from '../../config/key';
-
+import { Container } from "./style";
 
 
 function Details(){
@@ -24,11 +24,21 @@ function Details(){
               releaseDate: release_date
           }
           setMovie(movie)
-          console.log(movie)
+          
         })
       }, [id])
     return(
-        <h1>Página de detalhes</h1>
+        <Container>
+            <div className="movie">
+                <img src={movie.image} alt={movie.sinopse}/>
+                <div classNmae="details">
+                    <h1>{movie.title}</h1>
+                    <span>Sinopse:{movie.sinopse}</span>
+                    <span className="release-date">Release date: {movie.releaseDate}</span>
+                    <button>Go Back</button>
+                </div>
+            </div>
+        </Container>
     )
 }
 
