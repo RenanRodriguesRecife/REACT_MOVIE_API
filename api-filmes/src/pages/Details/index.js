@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { APIKey } from '../../config/key';
 import { Container } from "./style";
 
@@ -14,7 +14,7 @@ function Details(){
         .then(response => response.json())
         .then(data => {
 
-          const [title, poster_path, overview, release_date] = data;
+          const {title, poster_path, overview, release_date} = data;
 
           const movie = {
               id,
@@ -35,7 +35,7 @@ function Details(){
                     <h1>{movie.title}</h1>
                     <span>Sinopse:{movie.sinopse}</span>
                     <span className="release-date">Release date: {movie.releaseDate}</span>
-                    <button>Go Back</button>
+                    <Link to="/"><button>Go Back</button></Link>
                 </div>
             </div>
         </Container>
