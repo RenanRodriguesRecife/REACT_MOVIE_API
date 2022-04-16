@@ -13,12 +13,15 @@ function Details(){
         fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${APIKey}&language=en-US`)
         .then(response => response.json())
         .then(data => {
+
+          const [title, poster_path, overview, release_date] = data;
+
           const movie = {
               id,
-              title: data.title,
-              sinopse: data.overview,
-              image: `${image_path}${data.poster_path}`,
-              releaseDate: data.release_date
+              title: title,
+              sinopse: overview,
+              image: `${image_path}${poster_path}`,
+              releaseDate: release_date
           }
           setMovie(movie)
           console.log(movie)
